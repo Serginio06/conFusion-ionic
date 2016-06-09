@@ -31,8 +31,16 @@ angular.module('conFusion.services',['ngResource'])
 
         }])
 
-        .factory('corporateFactory', ['$resource', 'baseURL', function($resource,baseURL) {
+    .factory('corporateFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
+
+
+
+//            this.getLeaders = function(){
+//
+//                return $resource(baseURL+"leadership/:id",null,  {'update':{method:'PUT' }});
+//
+//            };
 
             return $resource(baseURL+"leadership/:id");
 
