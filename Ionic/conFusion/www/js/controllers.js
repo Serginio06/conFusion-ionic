@@ -11,6 +11,9 @@ angular.module('conFusion.controllers', [])
 
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.reservation = {};
+
+
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -29,16 +32,46 @@ angular.module('conFusion.controllers', [])
     $scope.modal.show();
   };
 
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    $timeout(function (){
+      $scope.closeLogin();},
+     1500);
   };
+
+    // Create the Reserve modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/reserve.html', {
+        scope: $scope
+    }).then(function(modal) {
+        $scope.reserveform = modal;
+    });
+
+    // Triggered in the Reserve modal to close it
+    $scope.closeReserve = function() {
+        $scope.reserveform.hide();
+    };
+
+    // Open the Reserve modal
+    $scope.reserve = function() {
+        $scope.reserveform.show();
+    };
+
+    // Perform the Reserve action when the user submits the login form
+    $scope.doReserve = function() {
+        console.log('Doing login', $scope.reservation);
+
+        // Simulate a Reserve delay. Remove this and replace with your login
+        // code if using a Reserve system
+        $timeout(function (){
+            $scope.closeReserve();
+        }, 1500);
+    };
+
 })
 
     .controller('MenuController', ['$scope', 'menuFactory', 'baseURL', function($scope, menuFactory, baseURL) {
