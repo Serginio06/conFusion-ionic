@@ -40,9 +40,8 @@ angular.module('conFusion.controllers', [])
         // Simulate a login delay. Remove this and replace with your login
         // code if using a login system
         $timeout(function () {
-                $scope.closeLogin();
-            }
-            , 1500);
+            $scope.closeLogin();
+        }, 1500);
     };
 
     // Create the Reserve modal that we will use later
@@ -88,8 +87,8 @@ angular.module('conFusion.controllers', [])
         function (response) {
             $scope.dishes = response;
             $scope.showMenu = true;
-        }
-        , function (response) {
+        },
+        function (response) {
             $scope.message = "Error: " + response.status + " " + response.statusText;
         });
 
@@ -129,19 +128,19 @@ angular.module('conFusion.controllers', [])
 .controller('ContactController', ['$scope', function ($scope) {
 
     $scope.feedback = {
-        mychannel: ""
-        , firstName: ""
-        , lastName: ""
-        , agree: false
-        , email: ""
+        mychannel: "",
+        firstName: "",
+        lastName: "",
+        agree: false,
+        email: ""
     };
 
     var channels = [{
-        value: "tel"
-        , label: "Tel."
+        value: "tel",
+        label: "Tel."
     }, {
-        value: "Email"
-        , label: "Email"
+        value: "Email",
+        label: "Email"
     }];
 
     $scope.channels = channels;
@@ -162,11 +161,11 @@ angular.module('conFusion.controllers', [])
             $scope.invalidChannelSelection = false;
             feedbackFactory.save($scope.feedback);
             $scope.feedback = {
-                mychannel: ""
-                , firstName: ""
-                , lastName: ""
-                , agree: false
-                , email: ""
+                mychannel: "",
+                firstName: "",
+                lastName: "",
+                agree: false,
+                email: ""
             };
             $scope.feedback.mychannel = "";
             $scope.feedbackForm.$setPristine();
@@ -175,22 +174,26 @@ angular.module('conFusion.controllers', [])
     };
     }])
 
-    .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', 'baseURL', '$ionicPopover', function ($scope, $stateParams, menuFactory, baseURL, $ionicPopover) {
+.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', 'baseURL', '$ionicPopover', function ($scope, $stateParams, menuFactory, baseURL, $ionicPopover) {
 
     $scope.baseURL = baseURL;
     $scope.dish = {};
     $scope.showDish = false;
     $scope.message = "Loading ...";
 
-    $ionicPopover.fromTemplateUrl('templates/popover.html',{
-    scope: $scope
-     }).then(function(popover){
+    $ionicPopover.fromTemplateUrl('templates/popover.html', {
+        scope: $scope
+    }).then(function (popover) {
         $scope.popover = popover;
-     });
+    });
 
-        $scope.openPopover = function($event) {
-            $scope.popover.show($event);
-        };
+    $scope.openPopover = function ($event) {
+        $scope.popover.show($event);
+    };
+
+    $scope.closePopover = function () {
+        $scope.popover.hide();
+    };
 
 
 
@@ -201,8 +204,8 @@ angular.module('conFusion.controllers', [])
             function (response) {
                 $scope.dish = response;
                 $scope.showDish = true;
-            }
-            , function (response) {
+            },
+            function (response) {
                 $scope.message = "Error: " + response.status + " " + response.statusText;
             }
         );
@@ -213,10 +216,10 @@ angular.module('conFusion.controllers', [])
 .controller('DishCommentController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
 
     $scope.mycomment = {
-        rating: 5
-        , comment: ""
-        , author: ""
-        , date: ""
+        rating: 5,
+        comment: "",
+        author: "",
+        date: ""
     };
 
     $scope.submitComment = function () {
@@ -232,10 +235,10 @@ angular.module('conFusion.controllers', [])
         $scope.commentForm.$setPristine();
 
         $scope.mycomment = {
-            rating: 5
-            , comment: ""
-            , author: ""
-            , date: ""
+            rating: 5,
+            comment: "",
+            author: "",
+            date: ""
         };
     }
     }])
@@ -257,8 +260,8 @@ angular.module('conFusion.controllers', [])
             function (response) {
                 $scope.dish = response;
                 $scope.showDish = true;
-            }
-            , function (response) {
+            },
+            function (response) {
                 $scope.message = "Error: " + response.status + " " + response.statusText;
             }
         );
@@ -301,8 +304,8 @@ angular.module('conFusion.controllers', [])
             $timeout(function () {
                 $ionicLoading.hide();
             }, 1500);
-        }
-        , function (response) {
+        },
+        function (response) {
             $scope.message = "Error: " + response.status + " " + response.statusText;
             $timeout(function () {
                 $ionicLoading.hide();
@@ -321,8 +324,8 @@ angular.module('conFusion.controllers', [])
 
     $scope.deleteFavorite = function (index) {
         var confirmPopup = $ionicPopup.confirm({
-            title: 'Confirm Delete'
-            , template: 'Are you sure you want to delete this item?'
+            title: 'Confirm Delete',
+            template: 'Are you sure you want to delete this item?'
         });
 
         confirmPopup.then(function (res) {
@@ -344,15 +347,6 @@ angular.module('conFusion.controllers', [])
 
 
     }])
-
-    .controller ('PopoverCtrl',[ '$scope', '$ionicPopover' , function($scope, $ionicPopover){
-
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-        console.log ('Popover closed');
-    };
-
-}])
 
 .filter('favoriteFilter', function () {
 
