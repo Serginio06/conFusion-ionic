@@ -1,0 +1,26 @@
+
+export ANDROID_HOME=~/Development/android-sdk/
+export PATH=${PATH}:~/Development/android-sdk/platform-tools:~/Development/android-sdk/tools
+
+
+#My aliases
+alias cl='clear'
+alias gl='git log --pretty=oneline'
+
+# Bash
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx # dark background
+alias ls='ls -laghFG'
+alias ll='ls -laghFG'
+alias l='ls -laghFG'
+alias xcode='open -a xcode'
+alias text='open -a TextEdit'
+alias pre='open -a Preview'
+alias cd..='cd ..'
+alias ionic='cd ~/Temporary/WebDev/Coursera/4\ Ionic/Ionic/conFusion'
+
+# Commom Mac programs
+alias reload='source ~/.bash_profile'
+#alias xcode='open -a xcode'
+# alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias text='open -a TextEdit'
+
