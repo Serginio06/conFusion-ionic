@@ -113,7 +113,7 @@ angular.module('conFusion.controllers', [])
             targetWidth: 100,
             targetHeight: 100,
             popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: false
+            saveToPhotoAlbum: false 
         };
         
          $scope.takePicture = function() {
