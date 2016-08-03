@@ -35,7 +35,7 @@
          setTimeout(function () {
              dishesModel.findByIdAndUpdate(id, {
                  $set: {
-                     descripttion: 'Updated test'
+                     description: 'Updated test'
                  }
              }, {
                  new: true
