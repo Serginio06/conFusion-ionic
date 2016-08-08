@@ -16,7 +16,7 @@ alias xcode='open -a xcode'
 alias text='open -a TextEdit'
 alias pre='open -a Preview'
 alias cd..='cd ..'
-alias ionic='cd ~/Temporary/WebDev/Coursera/4\ Ionic/Ionic/conFusion'
+alias myionic='cd /VOLUMES/MACEXDRIVE\ 1/Temporary/WebDev/Coursera/4\ Ionic/'
 
 # Commom Mac programs
 alias reload='source ~/.bash_profile'
@@ -24,3 +24,4 @@ alias reload='source ~/.bash_profile'
 # alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias text='open -a TextEdit'
 
+source ~/.bashrc
