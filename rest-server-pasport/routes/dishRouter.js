@@ -10,7 +10,9 @@ dishRouter.use(bodyParser.json());
 
 dishRouter.route('/')
 
-.get( Verify.verifyOrdinaryUser, function(req,res,next){
+.get(Verify.verifyOrdinaryUser, function( req,res,next){
+
+    console.log("/dishes");
         Dishes.find({}, function (err, dish) {
             if (err) throw err;
             res.json(dish);
@@ -18,7 +20,7 @@ dishRouter.route('/')
         })
 })
 
-.post( Verify.verifyOrdinaryUser, function(req, res, next){
+.post(Verify.verifyAdminUser, function(req, res, next){
     
     Dishes.create(req.body, function (err, dish) {
         if (err) throw err;
@@ -33,7 +35,7 @@ dishRouter.route('/')
     });
 })
 
-.delete( Verify.verifyOrdinaryUser, function(req, res, next){
+.delete(Verify.verifyAdminUser, function(req, res, next){
     
         Dishes.remove ({}, function (err, resp) {
             if (err) throw err;
@@ -49,7 +51,8 @@ dishRouter.route('/')
 dishRouter.route('/:dishId')
 
 
-.get(function(req,res,next){
+.get(Verify.verifyOrdinaryUser, function(req,res,next){
+    console.log('req.params.dishId=', req.params.dishId);
     Dishes.findById (req.params.dishId, function (err, dish) {
         if (err) {
         throw err;
@@ -59,7 +62,7 @@ dishRouter.route('/:dishId')
     
 })
 
-.put(function(req, res, next){
+.put(Verify.verifyAdminUser,  function(req, res, next){
     Dishes.findByIdAndUpdate (req.params.dishId, {
         $set: req.body
     },{
@@ -72,7 +75,7 @@ dishRouter.route('/:dishId')
     
 })
 
-.delete(function(req, res, next){
+.delete(Verify.verifyAdminUser, function(req, res, next){
     
     Dishes.remove(req.params.dishId, function (err, resp) {
         if (err) throw err;
