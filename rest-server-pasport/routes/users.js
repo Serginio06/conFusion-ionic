@@ -5,8 +5,14 @@ var User = require('../models/user');
 var Verify = require('./verify');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', Verify.verifyAdminUser, function(req, res, next) {
+//  res.send('respond with a resource');
+  User.find({}, function (err, users) {
+      if (err) { throw err;}
+        res.json(users);
+      
+      
+  })    
 });
 
 // Post method to register new user
@@ -24,7 +30,7 @@ router.post('/register', function (req, res) {
 });
 
 // post method to login existing user
-router.post('/login', function (req, res, next) {
+router.post('/login', Verify.verifyAdminUser, function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
         if (err) {
           return next(err);
